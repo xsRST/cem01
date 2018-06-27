@@ -42,6 +42,14 @@
 			<label class="control-label visible-ie8 visible-ie9">密码</label>
 			<input id="login-usePwd" class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="密码" name="password"/>
 		</div>
+    <div class="row">
+        <div class="col-lg-5" >
+            <input id="login-verification" class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="验证码" />
+        </div>
+        <div class="col-lg-6 col-lg-offset-1" >
+            <p id="verify"  style="background-color: #0d638f;letter-spacing:3px;font-style:italic;font-size: 36px;text-decoration: line-through;cursor:default; " ></p>
+        </div>
+	</div>
 		<div id="login-msg" style="height: 20px;color: red ">${msg !""}</div>
 		<div class="form-actions">
 			<button id="login-submit" type="submit" class="btn btn-success uppercase btn-xs btn-block">登录</button>
