@@ -1,7 +1,11 @@
 package com.shsxt.base;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+
+import java.util.List;
 
 public abstract class BaseService<T> {
     @Autowired
@@ -24,9 +28,14 @@ public abstract class BaseService<T> {
      * @param baseQuery
      * @return
      */
-    /*public List<T> selectByParams(BaseQuery baseQuery) throws DataAccessException{
+    public PageInfo<T> queryForPage(BaseQuery baseQuery) throws DataAccessException{
 
-    }*/;
+        PageHelper.startPage(baseQuery.getPageNum(),baseQuery.getPageSize());
+        List<T> list=baseDao.selectByParams(baseQuery);
+        return new PageInfo<>(list);
+    };
+
+
 
 
 }

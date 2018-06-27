@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
 
 @Controller
-
+@RequestMapping("user")
 public class UserController extends BaseController<User> {
 
     @Resource
@@ -36,6 +38,10 @@ public class UserController extends BaseController<User> {
         return success("密码修改成功!!");
     }
 
-
+    @RequestMapping("querySaleCustomerManager")
+    @ResponseBody
+    public List<Map<String,Object>> querySaleCustomerManager(){
+        return  userService.querySaleCustomerManager();
+    }
 
 }

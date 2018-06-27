@@ -12,6 +12,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserService extends BaseService<User> {
@@ -94,5 +96,12 @@ public class UserService extends BaseService<User> {
         AssertUtil.isTrue(StringUtils.isBlank(userName),"用户名不可为空");
     }
 
+    /**
+     * 查询销售客户负责人
+     * @return
+     */
+    public List<Map<String, Object>> querySaleCustomerManager(){
+        return userDao.querySaleCustomerManager();
+    }
 
 }

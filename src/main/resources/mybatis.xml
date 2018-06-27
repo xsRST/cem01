@@ -6,6 +6,7 @@
 <configuration>
     <typeAliases>
         <package name="com.shsxt.crm.vo"/>
+        <package name="com.shsxt.crm.query" />
     </typeAliases>
     <plugins>
         <plugin interceptor="com.github.pagehelper.PageHelper">

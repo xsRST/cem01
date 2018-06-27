@@ -57,4 +57,17 @@
     </set>
     where id=#{id} and is_valid=1
   </update>
+
+  <!--查询id,真实名称分配客户-->
+  <select id="querySaleCustomerManager" resultType="map">
+    SELECT
+      u.id,
+      u.true_name AS trueName
+    FROM
+      t_user u
+      LEFT JOIN t_user_role ur ON u.id = ur.user_id
+    WHERE
+      ur.role_id = 2
+      AND u.is_valid = 1
+  </select>
 </mapper>
