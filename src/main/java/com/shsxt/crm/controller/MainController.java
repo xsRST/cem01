@@ -22,7 +22,6 @@ public class MainController {
          * 获取id
          * 通过id获取User对应的信息
          */
-        request.setAttribute("ctx",request.getContextPath());
 
         int id=LoginUserUtil.releaseUserIdFromCookie(request);
         User user =userService.selectById(id);

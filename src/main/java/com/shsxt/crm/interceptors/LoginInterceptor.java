@@ -31,6 +31,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
          * 判断cookie中用户id是否存在
          */
         Integer id=LoginUserUtil.releaseUserIdFromCookie(request);
+        request.setAttribute("ctx",request.getContextPath());
         AssertUtil.isNotLogin(null==id||null==userService.selectById(id),CrmConstant.NOT_LOGIN_MSG);
         return true;
     }

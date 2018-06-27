@@ -77,7 +77,6 @@ public class SaleChanceController extends BaseController<SaleChance> {
      */
     @RequestMapping("index")
     public String index(HttpServletRequest request){
-        request.setAttribute("ctx",request.getContextPath());
         return "sale_Chance";
     }
 
