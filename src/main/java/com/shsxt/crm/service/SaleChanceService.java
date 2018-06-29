@@ -46,7 +46,7 @@ public class SaleChanceService extends BaseService<SaleChance> {
      */
     public void updateSaleChance(SaleChance saleChance) {
         checkParams(saleChance.getId(),saleChance.getCustomerName(),saleChance.getLinkMan(),saleChance.getLinkPhone());
-        if(StringUtils.isNotBlank(saleChance.getAssignMan())){ //存在分配人
+        if(null != saleChance.getAssignId()){ //存在分配人
             saleChance.setState(1);
             saleChance.setAssignTime(new Date());
         }
@@ -81,8 +81,9 @@ public class SaleChanceService extends BaseService<SaleChance> {
      */
     public  void saveSaleChance(SaleChance saleChance){
         checkParams(saleChance.getCustomerName(),saleChance.getLinkMan(),saleChance.getLinkPhone());
+        saleChance.setIsValid(1);
         saleChance.setState(0);
-        if(StringUtils.isNotBlank(saleChance.getAssignMan())){
+        if(null != saleChance.getAssignId()){
             saleChance.setState(1);
             saleChance.setAssignTime(new Date());
         }

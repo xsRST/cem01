@@ -1,6 +1,7 @@
 package com.shsxt.crm.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -24,9 +25,11 @@ public class SaleChance {
 
     private String createMan;
 
+    private Integer assignId;
     private String assignMan;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT"+8)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date assignTime;
 
     private Integer state;
@@ -34,10 +37,22 @@ public class SaleChance {
     private Integer devResult;
 
     private Integer isValid;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT"+8)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT"+8)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateDate;
+
+
+    public String getAssignMan() {
+        return assignMan;
+    }
+
+    public void setAssignMan(String assignMan) {
+        this.assignMan = assignMan;
+    }
 
     public Integer getId() {
         return id;
@@ -111,12 +126,12 @@ public class SaleChance {
         this.createMan = createMan == null ? null : createMan.trim();
     }
 
-    public String getAssignMan() {
-        return assignMan;
+    public Integer getAssignId() {
+        return assignId;
     }
 
-    public void setAssignMan(String assignMan) {
-        this.assignMan = assignMan == null ? null : assignMan.trim();
+    public void setAssignId(Integer assignId) {
+        this.assignId = assignId;
     }
 
     public Date getAssignTime() {

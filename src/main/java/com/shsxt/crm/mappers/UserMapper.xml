@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shsxt.crm.dao.UserDao" >
-  <resultMap id="BaseResultMap" type="user" >
+  <!--<resultMap id="BaseResultMap" type="user" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
@@ -11,19 +11,19 @@
     <result column="is_valid" property="isValid" jdbcType="INTEGER" />
     <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
     <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
-  </resultMap>
+  </resultMap>-->
   <sql id="User_Column_List" >
     id, user_name, user_pwd, true_name, email, phone, is_valid, create_date, update_date
   </sql>
   <!--通过主键查询记录-->
-  <select id="selectById" resultMap="BaseResultMap" parameterType="int" >
+  <select id="selectById" resultType="user" parameterType="int" >
     select
     <include refid="User_Column_List" />
     from t_user
     where id = #{id}
   </select>
   <!--通过用户名查询记录-->
-  <select id="selectByName" parameterType="string" resultMap="BaseResultMap">
+  <select id="selectByName" parameterType="string" resultType="user">
     select
       <include refid="User_Column_List" />
     from t_user

@@ -17,6 +17,7 @@ public abstract class BaseService<T> {
      * @return
      */
     public T selectById(Integer id)throws DataAccessException{
+
         return baseDao.selectById(id);
     };
 

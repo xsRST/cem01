@@ -13,7 +13,7 @@ public class IndexController {
 
     @RequestMapping("index")
     public String index(HttpServletRequest request){
-
+        request.setAttribute("ctx",request.getContextPath());
         return "index";
     }
 }

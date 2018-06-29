@@ -1,26 +1,46 @@
-$(function () {
-    $('#dg').datagrid({
-        rowStyler: function (index, row) {
-            if (row.devResult == 1 || row.devResult == 0) {
-                return 'background-color:#F3B35E';
-            }
-            if (row.devResult == 2) {
-                return 'background-color:#B4F8AB';
-            }
-            if (row.devResult == 3) {
-                return 'background-color:#F38471';
-            }
-        }
+    $("#dg").edatagrid({
+        url: 'list_plan', // 使用相对路径
+        saveUrl: 'add',
+        updateUrl: 'update',
+        destroyUrl: 'delete'
     });
 
-    $("#edg").edatagrid({
-        url: ctx+"/cusDevPlan/queryByParams",
-        saveUrl: ctx+"/cusDevPlan/queryByParams",
-        updateUrl: ctx+"/cusDevPlan/queryByParams",
-        destroyUrl: ctx+"/cusDevPlan/queryByParams"
-    })
-});
+/**
+ * 添加计划
+ */
+function addPlan() {
+    $('#dg').edatagrid('addRow');
+}
 
+/**
+ * 删除计划
+ */
+function deletePlan() {
+    $('#dg').edatagrid('destroyRow');
+}
+
+/**
+ * 保存计划
+ */
+function savePlan() {
+    $('#dg').edatagrid('saveRow');
+}
+function cancelPlan() {
+    $('#dg').edatagrid('cancelRow');
+}
+/**
+ * 更改开发状态
+ * @param value
+ */
+function updateSaleChanceDevResult(value) {
+    $.get("update",{devRsult:value},function (result) {
+        $.messager.alert("提示",result.msg,function () {
+            if(result.code==200){
+                window.parent.openTab('客户开发计划',ctx + '/saleChance/plan_index','icon-khkfjh')
+            }
+        })
+    })
+}
 
 /**
  * 客户开发状态

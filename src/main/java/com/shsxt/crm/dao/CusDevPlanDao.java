@@ -1,11 +1,13 @@
 package com.shsxt.crm.dao;
 
+import com.shsxt.base.BaseDao;
 import com.shsxt.crm.vo.CusDevPlan;
 
-public interface CusDevPlanMapper {
+import java.util.List;
+
+public interface CusDevPlanDao extends BaseDao<CusDevPlan> {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(CusDevPlan record);
 
     int insertSelective(CusDevPlan record);
 
@@ -14,4 +16,6 @@ public interface CusDevPlanMapper {
     int updateByPrimaryKeySelective(CusDevPlan record);
 
     int updateByPrimaryKey(CusDevPlan record);
+
+    List<CusDevPlan> queryBySaleChanceId(Integer saleChanceId);
 }

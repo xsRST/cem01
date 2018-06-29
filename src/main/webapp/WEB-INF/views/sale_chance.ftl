@@ -74,7 +74,7 @@
                 <td><input type="text" name="description"/></td>
                 <td>分配人</td>
                 <td>
-                    <input id="cc" class="easyui-combobox" name="assignMan"
+                    <input id="cc" class="easyui-combobox" name="assignId"
                            valueField="id" textField="trueName" url="${ctx}/user/querySaleCustomerManager" panelHeight="auto"/>
 
                 </td>

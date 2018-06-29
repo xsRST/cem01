@@ -80,5 +80,9 @@ public class SaleChanceController extends BaseController<SaleChance> {
         return "sale_Chance";
     }
 
+    @RequestMapping("cusDevPlanIndex")
+    public String cusDevPlanIndex(){
+        return "plan_index";
+    }
 
 }
