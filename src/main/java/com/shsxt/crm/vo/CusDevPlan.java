@@ -1,40 +1,22 @@
 package com.shsxt.crm.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.shsxt.base.BaseModel;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-public class CusDevPlan {
-    private Integer id;
+public class CusDevPlan extends BaseModel {
 
-    private Integer saleChanceId;
+    private Integer saleChanceId; //销售机会ID
 
-    private String planItem;
+    private String planItem; //计划内容
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT"+8)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date planDate;
+    private Date planDate; //计划日期
 
-    private String exeAffect;
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT"+8)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createDate;
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT"+8)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date updateDate;
-
-    private Integer isValid;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    private String exeAffect; //计划结果
 
     public Integer getSaleChanceId() {
         return saleChanceId;
@@ -68,27 +50,4 @@ public class CusDevPlan {
         this.exeAffect = exeAffect == null ? null : exeAffect.trim();
     }
 
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
-    }
-
-    public Integer getIsValid() {
-        return isValid;
-    }
-
-    public void setIsValid(Integer isValid) {
-        this.isValid = isValid;
-    }
 }

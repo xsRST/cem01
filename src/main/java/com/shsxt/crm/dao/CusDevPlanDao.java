@@ -6,16 +6,11 @@ import com.shsxt.crm.vo.CusDevPlan;
 import java.util.List;
 
 public interface CusDevPlanDao extends BaseDao<CusDevPlan> {
-    int deleteByPrimaryKey(Integer id);
 
-
-    int insertSelective(CusDevPlan record);
-
-    CusDevPlan selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(CusDevPlan record);
-
-    int updateByPrimaryKey(CusDevPlan record);
-
+    /**
+     * 通过销售机会ID查询对应计划
+     * @param saleChanceId
+     * @return
+     */
     List<CusDevPlan> queryBySaleChanceId(Integer saleChanceId);
 }

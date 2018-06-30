@@ -31,7 +31,7 @@ public abstract class BaseService<T> {
      */
     public PageInfo<T> queryForPage(BaseQuery baseQuery) throws DataAccessException{
 
-        PageHelper.startPage(baseQuery.getPageNum(),baseQuery.getPageSize());
+        PageHelper.startPage(baseQuery.getPage(),baseQuery.getRows());
         List<T> list=baseDao.selectByParams(baseQuery);
         return new PageInfo<>(list);
     };

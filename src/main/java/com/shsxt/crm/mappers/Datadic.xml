@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shsxt.crm.dao.DatadicDao" >
+
+  <sql id="Base_List">
+
+  </sql>
+  <!--查询相应字段(选择框)-->
+  <select id="findValues" parameterType="string" resultType="datadic">
+    select data_dic_name,data_dic_value
+    from t_datadic
+    where data_dic_name=#{dataDicName} and is_valid=1
+  </select>
+</mapper>

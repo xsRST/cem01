@@ -4,6 +4,7 @@ import com.shsxt.base.BaseController;
 import com.shsxt.crm.model.ResultInfo;
 import com.shsxt.crm.service.CusDevPlanService;
 import com.shsxt.crm.service.SaleChanceService;
+import com.shsxt.crm.utils.AssertUtil;
 import com.shsxt.crm.vo.CusDevPlan;
 import com.shsxt.crm.vo.SaleChance;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,13 @@ public class CusDevPlanController extends BaseController<CusDevPlan> {
 
     @Autowired
     private CusDevPlanService cusDevPlanService;
+
+    @GetMapping("{saleChanceId}/update_dev_result")
+    @ResponseBody
+    public ResultInfo<CusDevPlan> updateDevResult(@PathVariable Integer saleChanceId,Integer devResult){
+        saleChanceService.updateDevResult(saleChanceId,devResult);
+        return success("提交成功");
+    }
 
     /**
      * 删除客户计划
@@ -79,6 +87,7 @@ public class CusDevPlanController extends BaseController<CusDevPlan> {
     @RequestMapping("{saleChanceId}/index")
     public String index(@PathVariable(value = "saleChanceId") Integer saleChanceId, Model model,Integer show){
         SaleChance saleChance=saleChanceService.selectById(saleChanceId);
+        AssertUtil.isTrue(null==saleChance,"客户不存在");
         model.addAttribute("saleChance",saleChance);
         model.addAttribute("show",show);
         return "cus_dev_plan";

@@ -120,5 +120,14 @@ public class SaleChanceService extends BaseService<SaleChance> {
     }
 
 
-
+    /**
+     * 更改客户开发状态
+     * @param saleChanceId
+     * @param devResult
+     */
+    public void updateDevResult(Integer saleChanceId, Integer devResult) {
+        AssertUtil.isTrue(null==saleChanceId,"请选择对应客户");
+        AssertUtil.isTrue(null==devResult,"请选择要更改的状态");
+        AssertUtil.isTrue(saleChanceDao.updateDevResult(saleChanceId,devResult)<1,"更新失败,请联系管理员");
+    }
 }

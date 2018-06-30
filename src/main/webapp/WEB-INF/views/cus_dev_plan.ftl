@@ -32,8 +32,8 @@
         </tr>
         <tr>
             <td>机会描述：</td>
-            <td colspan="4">
-                <textarea rows="5" cols="50" id="description" name="description" readonly="readonly" >${saleChance.description?if_exists}</textarea>
+            <td colspan="5">
+                <textarea rows="5" cols="50" id="description" name="description" readonly="readonly" style="resize:none" >${saleChance.description?if_exists}</textarea>
             </td>
         </tr>
         <tr>
@@ -41,7 +41,7 @@
             <td><input type="text" readonly="readonly" id="createMan" name="createMan" value="${saleChance.createMan?if_exists}" /></td>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>创建时间：</td>
-            <td><input type="text" id="createTime" name="createDate" readonly="readonly" value="${saleChance.createDate?string('yyyy-MM-dd HH:mm:ss')}" /></td>
+            <td><input type="text" id="createTime" name="createDate" readonly="readonly" value="${(saleChance.createDate?string('yyyy-MM-dd HH:mm:ss'))!}" /></td>
         </tr>
         <tr>
             <td>指派给：</td>
@@ -50,7 +50,7 @@
             </td>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>指派时间：</td>
-            <td><input type="text" id="assignTime" name="assignTime" readonly="readonly" value="${saleChance.assignTime?string("yyyy-MM-dd HH:mm:ss")}" /></td>
+            <td><input type="text" id="assignTime" name="assignTime" readonly="readonly" value="${(saleChance.assignTime?string("yyyy-MM-dd HH:mm:ss"))!}" /></td>
         </tr>
     </table>
 </div>

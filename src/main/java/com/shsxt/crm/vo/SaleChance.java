@@ -1,50 +1,39 @@
 package com.shsxt.crm.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.shsxt.base.BaseModel;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-public class SaleChance {
-    private Integer id;
+public class SaleChance extends BaseModel {
 
-    private String chanceSource;
+    private String chanceSource; //机会来源
 
+    private String customerName; //客户名称
 
-    private String customerName;
+    private Integer cgjl; //成功几率
 
-    private Integer cgjl;
+    private String overview; //概要
 
-    private String overview;
+    private String linkMan; //联系人
 
-    private String linkMan;
+    private String linkPhone; //联系电话
 
-    private String linkPhone;
+    private String description; //机会描述
 
-    private String description;
+    private String createMan; //创建人
 
-    private String createMan;
-
-    private Integer assignId;
-    private String assignMan;
+    private Integer assignId; //分配人ID
+    private String assignMan; //分配人名称
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT"+8)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date assignTime;
+    private Date assignTime; //分配时间
 
-    private Integer state;
+    private Integer state; //分配状态
 
-    private Integer devResult;
-
-    private Integer isValid;
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT"+8)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createDate;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT"+8)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date updateDate;
-
+    private Integer devResult; //开发状态
 
     public String getAssignMan() {
         return assignMan;
@@ -54,13 +43,6 @@ public class SaleChance {
         this.assignMan = assignMan;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getChanceSource() {
         return chanceSource;
@@ -158,27 +140,4 @@ public class SaleChance {
         this.devResult = devResult;
     }
 
-    public Integer getIsValid() {
-        return isValid;
-    }
-
-    public void setIsValid(Integer isValid) {
-        this.isValid = isValid;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
-    }
 }

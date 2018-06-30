@@ -10,13 +10,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class CusDevPlanService extends BaseService<CusDevPlan>{
 
-    @Autowired
+    @Resource
     private CusDevPlanDao cusDevPlanDao;
 
     @Autowired
@@ -88,9 +89,6 @@ public class CusDevPlanService extends BaseService<CusDevPlan>{
         cusDevPlan.setSaleChanceId(saleChanceId);
         cusDevPlan.setIsValid(1);
         AssertUtil.isTrue(cusDevPlanDao.update(cusDevPlan)<1,"更新失败");
-        /*
-            更新完计划之后 要
-         */
     }
 
     /**

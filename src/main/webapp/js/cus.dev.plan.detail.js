@@ -33,10 +33,11 @@ function cancelPlan() {
  * @param value
  */
 function updateSaleChanceDevResult(value) {
-    $.get("update",{devRsult:value},function (result) {
-        $.messager.alert("提示",result.msg,function () {
+    $.get("update_dev_result",{"devResult":value},function (result) {
+        $.messager.alert("提示",result.msg,"info",function () {
             if(result.code==200){
-                window.parent.openTab('客户开发计划',ctx + '/saleChance/plan_index','icon-khkfjh')
+                var url=ctx + '/saleChance/cusDevPlanIndex';
+                window.parent.openTab('客户开发计划',url,'icon-khkfjh')
             }
         })
     })

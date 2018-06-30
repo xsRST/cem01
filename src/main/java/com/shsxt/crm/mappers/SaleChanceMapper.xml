@@ -132,6 +132,11 @@
     </foreach>
   </update>
 
+  <update id="updateDevResult" >
+    update t_sale_chance
+    set dev_result=#{devResult}
+    where id=#{saleChanceId}
+  </update>
   <insert id="insertSelective" parameterType="saleChance" >
     insert into t_sale_chance
     <trim prefix="(" suffix=")" suffixOverrides="," >

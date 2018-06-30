@@ -38,6 +38,10 @@ public class UserController extends BaseController<User> {
         return success("密码修改成功!!");
     }
 
+    /**
+     * 获取销售客户经理人
+     * @return
+     */
     @RequestMapping("querySaleCustomerManager")
     @ResponseBody
     public List<Map<String,Object>> querySaleCustomerManager(){

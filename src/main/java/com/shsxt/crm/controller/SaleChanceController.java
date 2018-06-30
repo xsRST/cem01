@@ -7,7 +7,6 @@ import com.shsxt.crm.service.SaleChanceService;
 import com.shsxt.crm.vo.SaleChance;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -56,17 +55,13 @@ public class SaleChanceController extends BaseController<SaleChance> {
     }
     /**
      * 显示销售机会列表
-     * @param page
-     * @param rows
      * @param saleChanceQuery
      * @return
      */
     @RequestMapping("querySaleChancesByParams")
     @ResponseBody
-    public Map<String,Object> querySaleChancesByParams(@RequestParam(defaultValue = "1")Integer page ,@RequestParam(defaultValue = "10") Integer rows, SaleChanceQuery saleChanceQuery){
+    public Map<String,Object> querySaleChancesByParams( SaleChanceQuery saleChanceQuery){
 
-        saleChanceQuery.setPageNum(page);
-        saleChanceQuery.setPageSize(rows);
         return saleChanceService.querySaleChancesByParams(saleChanceQuery);
     }
 

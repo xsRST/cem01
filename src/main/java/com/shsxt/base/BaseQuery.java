@@ -1,22 +1,22 @@
 package com.shsxt.base;
 
 public class BaseQuery {
-    private Integer pageNum=1; //当前页码
-    private Integer pageSize=10; //每页显示数量
+    private Integer page=1; //当前页码
+    private Integer rows=10; //每页显示数量
 
-    public Integer getPageNum() {
-        return pageNum;
+    public Integer getPage() {
+        return page;
     }
 
-    public void setPageNum(Integer pageNum) {
-        this.pageNum = pageNum;
+    public void setPage(Integer page) {
+        this.page = page;
     }
 
-    public Integer getPageSize() {
-        return pageSize;
+    public Integer getRows() {
+        return rows;
     }
 
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
+    public void setRows(Integer rows) {
+        this.rows = rows;
     }
 }
