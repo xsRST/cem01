@@ -5,6 +5,9 @@ import com.shsxt.crm.vo.Datadic;
 
 import java.util.List;
 
+/**
+ * @author 殇丶无求
+ */
 public interface DatadicDao extends BaseDao<Datadic> {
 
     /**

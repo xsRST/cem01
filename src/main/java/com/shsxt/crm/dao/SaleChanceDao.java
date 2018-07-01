@@ -4,6 +4,9 @@ import com.shsxt.base.BaseDao;
 import com.shsxt.crm.vo.SaleChance;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ * @author 殇丶无求
+ */
 public interface SaleChanceDao extends BaseDao<SaleChance> {
 
 

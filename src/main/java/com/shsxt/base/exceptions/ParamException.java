@@ -2,6 +2,7 @@ package com.shsxt.base.exceptions;
 
 /**
  * 参数错误
+ * @author 殇丶无求
  */
 public class ParamException extends RuntimeException{
 

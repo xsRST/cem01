@@ -2,6 +2,9 @@ package com.shsxt.base.exceptions;
 
 import com.shsxt.crm.constant.CrmConstant;
 
+/**
+ * @author 殇丶无求
+ */
 public class AuthException extends RuntimeException{
     private Integer errorCode=CrmConstant.NOT_LOGIN_CODE;
     private String errorMsg=CrmConstant.NOT_LOGIN_MSG;

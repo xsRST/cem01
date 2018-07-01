@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 登录拦截器
+ * @author 殇丶无求
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
     @Resource

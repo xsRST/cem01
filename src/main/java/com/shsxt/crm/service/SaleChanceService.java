@@ -15,6 +15,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author 殇丶无求
+ */
 @Service
 public class SaleChanceService extends BaseService<SaleChance> {
 
@@ -46,7 +49,8 @@ public class SaleChanceService extends BaseService<SaleChance> {
      */
     public void updateSaleChance(SaleChance saleChance) {
         checkParams(saleChance.getId(),saleChance.getCustomerName(),saleChance.getLinkMan(),saleChance.getLinkPhone());
-        if(null != saleChance.getAssignId()){ //存在分配人
+        /**假设存在分配人**/
+        if(null != saleChance.getAssignId()){
             saleChance.setState(1);
             saleChance.setAssignTime(new Date());
         }
@@ -112,7 +116,7 @@ public class SaleChanceService extends BaseService<SaleChance> {
      * @return
      */
     public  Map<String,Object> querySaleChancesByParams(SaleChanceQuery saleChanceQuery){
-        Map<String,Object> map=new HashMap<>();
+        Map<String,Object> map=new HashMap<>(4);
         PageInfo<SaleChance> pageInfo=queryForPage(saleChanceQuery);
         map.put("total",pageInfo.getTotal());
         map.put("rows",pageInfo.getList());

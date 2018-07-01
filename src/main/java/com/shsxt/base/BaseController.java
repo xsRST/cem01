@@ -2,6 +2,10 @@ package com.shsxt.base;
 
 import com.shsxt.crm.model.ResultInfo;
 
+/**
+ * @author 殇丶无求
+ * @param <T>
+ */
 public class BaseController<T> {
 
     public ResultInfo<T> success(String msg){

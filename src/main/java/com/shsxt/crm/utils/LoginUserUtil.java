@@ -5,7 +5,9 @@ import org.apache.commons.lang3.StringUtils;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by Tony on 2016/8/23.
+ *
+ * @author Tony
+ * @date 2016/8/23
  */
 public class LoginUserUtil {
 
@@ -14,7 +16,7 @@ public class LoginUserUtil {
      * @param request
      * @return
      */
-    public static int releaseUserIdFromCookie(HttpServletRequest request) {
+    public static Integer releaseUserIdFromCookie(HttpServletRequest request) {
         String userIdString = CookieUtil.getCookieValue(request, "userIdStr");
         if (StringUtils.isBlank(userIdString)) {
             return 0;

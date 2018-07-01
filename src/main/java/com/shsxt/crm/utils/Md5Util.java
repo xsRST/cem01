@@ -6,6 +6,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 
+/**
+ * @author 殇丶无求
+ */
 public class Md5Util {
 	
 	public static String  encode(String msg){

@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import java.util.Map;
 
+/**
+ * @author 殇丶无求
+ */
 @RequestMapping("customer")
 @Controller
 public class CustomerController extends BaseController<Customer> {
@@ -19,6 +22,12 @@ public class CustomerController extends BaseController<Customer> {
     @Resource
     private CustomerService customerService;
 
+    @RequestMapping("add")
+    @ResponseBody
+    public ResultInfo<Customer> add(Customer customer){
+        customerService.addCustomer(customer);
+        return success("添加成功");
+    }
     /**
      * 更新客户
      * @param customer

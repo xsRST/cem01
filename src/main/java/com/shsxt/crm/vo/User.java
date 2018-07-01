@@ -2,16 +2,25 @@ package com.shsxt.crm.vo;
 
 import com.shsxt.base.BaseModel;
 
+/**
+ * 用户
+ * @author 殇丶无求
+ */
 public class User extends BaseModel {
 
+    /**用户账号**/
     private String userName;
 
+    /**用户密码**/
     private String userPwd;
 
+    /**用户真实名称**/
     private String trueName;
 
+    /**邮箱**/
     private String email;
 
+    /**手机号**/
     private String phone;
 
     public String getUserName() {

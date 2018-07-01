@@ -27,7 +27,7 @@
     select
       <include refid="User_Column_List" />
     from t_user
-    where user_name=#{user_name}
+    where user_name=#{useName}
   </select>
   <!--更新记录-->
   <update id="update" parameterType="user" >

@@ -4,6 +4,9 @@ import com.mysql.jdbc.StringUtils;
 
 import java.util.Base64;
 
+/**
+ * @author 殇丶无求
+ */
 public class UserIDBase64 {
 
     /**

@@ -1,5 +1,8 @@
 package com.shsxt.crm.model;
 
+/**
+ * @author 殇丶无求
+ */
 public class UserModel {
     private String id;
     private String userName;

@@ -18,6 +18,7 @@ import java.lang.reflect.Method;
 
 /**
  * 异常统一处理,
+ * @author 殇丶无求
  */
 @Component
 public class GlobalExceptionResolver implements HandlerExceptionResolver {
@@ -30,7 +31,6 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
          * json异常
           */
         //1.登录异常
-
         if(ex instanceof AuthException){
             ModelAndView mv=getDefaultModelAndView();
             mv.setViewName("not_login");
@@ -45,63 +45,75 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
         }
         //通过方法上的注解 得知返回类型是视图还是json文件
         if(handler instanceof HandlerMethod){
-            HandlerMethod handlerMethod= (HandlerMethod) handler;
-            Method method=handlerMethod.getMethod(); //获取目标方法
-            ResponseBody  requestBody=method.getAnnotation(ResponseBody.class);
-            if(null!=requestBody){
-                /**
-                 * 不为空,返回类型是json类型
-                 */
-                ResultInfo resultInfo=new ResultInfo();
-                //设置默认错误信息
-                resultInfo.setCode(300);
-                resultInfo.setMsg("操作失败!");
-                //异常分析
-                //参数异常
-                if(ex instanceof ParamException){
-                    ParamException pe= (ParamException) ex;
-                    resultInfo.setCode(pe.getErroCode());
-                    resultInfo.setMsg(pe.getErroMsg());
-                }
-                /**
-                 * 将resultInfo对象写出到浏览器,格式为JSON
-                 */
-                response.setCharacterEncoding("utf-8");
-                response.setContentType("application/json;charset=utf-8");
-                PrintWriter pw= null;
-                try {
-                    pw = response.getWriter();
-                    pw.write(JSON.toJSONString(resultInfo));
-                    pw.flush();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }finally {
-                    if (null!=pw){
-                        pw.close();
-                    }
-                }
-                return null;
-            }
-            else{
-                /**
-                 * 当前方法返回视图
-                 */
-                ModelAndView mv=getDefaultModelAndView();
-                /*
-                    异常分析:
-                 */
-                //参数异常
-                if(ex instanceof ParamException){
-                    ParamException px= (ParamException) ex;
-                    mv.addObject("code",px.getErroCode());
-                    mv.addObject("msg",px.getErroMsg());
-                }
-                return mv;
-            }
+            return viewOrJson(ex,response,handler);
         }else{
             return getDefaultModelAndView();
         }
 
+    }
+
+    /**
+     * 识别返回类型是视图还是json文件
+     * @param ex
+     * @param response
+     * @param handler
+     * @return
+     */
+    private ModelAndView viewOrJson(Exception ex, HttpServletResponse response, Object handler) {
+        HandlerMethod handlerMethod= (HandlerMethod) handler;
+        /**获取目标方法**/
+        Method method=handlerMethod.getMethod();
+        ResponseBody  requestBody=method.getAnnotation(ResponseBody.class);
+        if(null!=requestBody){
+            /**
+             * 不为空,返回类型是json类型
+             */
+            ResultInfo resultInfo=new ResultInfo();
+            //设置默认错误信息
+            resultInfo.setCode(300);
+            resultInfo.setMsg("操作失败!");
+            //异常分析
+            //参数异常
+            if(ex instanceof ParamException){
+                ParamException pe= (ParamException) ex;
+                resultInfo.setCode(pe.getErroCode());
+                resultInfo.setMsg(pe.getErroMsg());
+            }
+            /**
+             * 将resultInfo对象写出到浏览器,格式为JSON
+             */
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("application/json;charset=utf-8");
+            PrintWriter pw= null;
+            try {
+                pw = response.getWriter();
+                pw.write(JSON.toJSONString(resultInfo));
+                pw.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }finally {
+                if (null!=pw){
+                    pw.close();
+                }
+            }
+            return null;
+        }
+        else{
+            /**
+             * 当前方法返回视图
+             */
+            ModelAndView mv=getDefaultModelAndView();
+                /*
+                    异常分析:
+                 */
+            //参数异常
+            if(ex instanceof ParamException){
+                ParamException px= (ParamException) ex;
+                mv.addObject("code",px.getErroCode());
+                mv.addObject("msg",px.getErroMsg());
+            }
+            return mv;
+        }
     }
 
     /**

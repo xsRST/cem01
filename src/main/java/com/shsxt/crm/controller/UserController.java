@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author 殇丶无求
+ */
 @Controller
 @RequestMapping("user")
 public class UserController extends BaseController<User> {

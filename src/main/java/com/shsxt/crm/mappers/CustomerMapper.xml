@@ -16,9 +16,22 @@
               and  khno like concat('%',#{khno},'%')
             </if>
             <if test="name !=null and name != ''">
-              and 'name' like concat('%',#{name},'%')
+              and `name` like concat('%',#{name},'%')
             </if>
-
         </where>
+        order by id desc
     </select>
+    <!--根据客户名称获取记录-->
+    <select id="selectByNmae" parameterType="string" resultType="customer">
+        select <include refid="Base_column" />
+        from t_customer
+        where `name` = #{name}
+    </select>
+
+    <insert id="insert" parameterType="customer">
+        insert into t_customer(khno,`name`,area,cus_manager,`level`,myd,xyd,address,post_code,phone,fax,
+                               web_site,yyzzzch,fr,zczj,nyye,khyh,khzh,dsdjh,gsdjh,state,is_valid,create_date,update_date)
+        values(#{khno},#{name},#{area},#{cusManager},#{level},#{myd},#{xyd},#{address},#{postCode},#{phone},#{fax},
+                    #{webSite},#{yyzzzch},#{fr},#{zczj},#{nyye},#{khyh},#{khzh},#{dsdjh},#{gsdjh},#{state},#{isValid},#{createDate},#{updateDate})
+    </insert>
 </mapper>

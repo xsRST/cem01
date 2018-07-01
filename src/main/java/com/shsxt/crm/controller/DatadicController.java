@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * @author 殇丶无求
+ */
 @RequestMapping("datadic")
 @Controller
 public class DatadicController {

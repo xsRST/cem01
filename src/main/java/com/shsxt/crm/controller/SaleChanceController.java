@@ -13,6 +13,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
+/**
+ * @author 殇丶无求
+ */
 @Controller
 @RequestMapping("saleChance")
 public class SaleChanceController extends BaseController<SaleChance> {

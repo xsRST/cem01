@@ -2,29 +2,53 @@ package com.shsxt.crm.vo;
 
 import com.shsxt.base.BaseModel;
 
+/**
+ * @author 殇丶无求
+ */
 public class Customer extends BaseModel {
 
-    private String khno; //客户编号
-    private String name; //客户名称
-    private String area; //地区
-    private String cusManager; //客户管理
-    private String level; //等级
-    private String myd; //客户满意度
-    private String xyd; //客户信用度
-    private String address; //详细地址
-    private String postCode; //邮政编号
-    private String phone; //手机号
-    private String fax; //传真
-    private String webSite; //官网
-    private String yyzzzch; //营业执照注册号
-    private String fr; //法人
-    private String zczj; //注册资金(万元)
-    private String nyye; //年营业额
-    private String khyh; //开户银行
-    private String khzh; //开户账号
-    private String dsdjh; //地税登记号
-    private String gsdjh; //国税登记号
-    private Integer state; //状态
+    /**客户编号**/
+    private String khno;
+    /**客户名称**/
+    private String name;
+    /**地区**/
+    private String area;
+    /**客户管理**/
+    private String cusManager;
+    /**等级**/
+    private String level;
+    /**客户满意度**/
+    private String myd;
+    /**客户信用度**/
+    private String xyd;
+    /**详细地址**/
+    private String address;
+    /**邮政编号**/
+    private String postCode;
+    /**手机号**/
+    private String phone;
+    /**传真**/
+    private String fax;
+    /**官网**/
+    private String webSite;
+    /**营业执照注册号**/
+    private String yyzzzch;
+    /**法人**/
+    private String fr;
+    /**注册资金(万元)**/
+    private String zczj;
+    /**年营业额**/
+    private String nyye;
+    /**开户银行**/
+    private String khyh;
+    /**开户账号**/
+    private String khzh;
+    /**地税登记号**/
+    private String dsdjh;
+    /**国税登记号**/
+    private String gsdjh;
+    /**状态**/
+    private Integer state;
 
 
     public String getKhno() {

@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * @author 殇丶无求
+ */
 @Service
 public class DatadicService  extends BaseService<Datadic> {
 

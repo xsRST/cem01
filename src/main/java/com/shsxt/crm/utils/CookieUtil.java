@@ -9,6 +9,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 
+/**
+ * @author 殇丶无求
+ */
 public class CookieUtil {
 
 	/**
@@ -86,9 +89,9 @@ public class CookieUtil {
 	 */
 	public static void deleteCookie(String cookieName, HttpServletRequest request, 
 			HttpServletResponse response) {
-		Cookie[] arr_cookie = request.getCookies();
-		if (arr_cookie != null && arr_cookie.length > 0) {
-			for (Cookie cookie : arr_cookie) {
+		Cookie[] arrCookie = request.getCookies();
+		if (arrCookie != null && arrCookie.length > 0) {
+			for (Cookie cookie : arrCookie) {
 				if (cookie.getName().equals(cookieName)) {
 					cookie.setValue("");
 					cookie.setMaxAge(0);

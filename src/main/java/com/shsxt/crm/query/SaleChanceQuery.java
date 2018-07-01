@@ -4,6 +4,9 @@ import com.shsxt.base.BaseQuery;
 
 import java.util.Date;
 
+/**
+ * @author 殇丶无求
+ */
 public class SaleChanceQuery extends BaseQuery {
 
     private Integer id;

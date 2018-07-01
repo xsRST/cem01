@@ -23,8 +23,10 @@ function openUpdateCustomer() {
     var row = $("#dg").datagrid("getSelections");
     if(row.length<1){
         $.messager.alert("修改客户","请选择一个客户","warning")
+        return;
     }else if(row.length>1){
-        $.messager.alert("修改客户","只能选择一个客户修改","warning")
+        $.messager.alert("修改客户","只能选择一个客户修改","warning");
+        return;
     }
     $("#fm").form("load",row[0]);
     $("#dlg").dialog("open").dialog("setTitle","修改客户")
@@ -36,17 +38,22 @@ function saveOrUpdateCustomer() {
     var id=$("#id").val();
     var url=ctx+'/customer/update';
     if(isEmpty(id)){
-        url=ctx+'/customer/save'
+        url=ctx+'/customer/add'
     }
-    $("#fm").form({
-
+    $("#fm").form("submit",{
         url:url,
         onSubmit:function (param) {
-            
+
         },
         success:function (result) {
-            $.messager.alert("来自crm",result.msg,"info");
-            reloadCustomer();
+            var result=JSON.parse(result);
+           if(result.code==200){ //操作成功
+               $.messager.alert("来自crm",result.msg,"success")
+               $("#fm").form("load");
+
+           }else{
+               $.messager.alert("来自crm",result.msg,"info")
+           }
         }
     });
 }

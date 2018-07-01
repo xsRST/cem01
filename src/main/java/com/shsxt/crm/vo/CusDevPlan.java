@@ -6,17 +6,25 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
+/**
+ * 客户发展计划
+ * @author 殇丶无求
+ */
 public class CusDevPlan extends BaseModel {
 
-    private Integer saleChanceId; //销售机会ID
+    /**销售机会ID**/
+    private Integer saleChanceId;
 
-    private String planItem; //计划内容
+    /**计划内容**/
+    private String planItem;
 
+    /**计划日期**/
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT"+8)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date planDate; //计划日期
+    private Date planDate;
 
-    private String exeAffect; //计划结果
+    /**计划结果**/
+    private String exeAffect;
 
     public Integer getSaleChanceId() {
         return saleChanceId;

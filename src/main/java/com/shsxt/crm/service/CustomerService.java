@@ -6,7 +6,9 @@ import com.shsxt.crm.dao.CustomerDao;
 import com.shsxt.crm.query.CustomerQuery;
 import com.shsxt.crm.utils.AssertUtil;
 import com.shsxt.crm.vo.Customer;
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -14,6 +16,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author 殇丶无求
+ */
 @Service
 public class CustomerService extends BaseService<Customer> {
 
@@ -26,7 +31,7 @@ public class CustomerService extends BaseService<Customer> {
      * @return
      */
     public Map<String,Object> queryByParams(CustomerQuery customerQuery) {
-        Map<String,Object> map=new HashMap<>();
+        Map<String,Object> map=new HashMap<>(6);
         PageInfo<Customer> pageInfo=queryForPage(customerQuery);
         map.put("total",pageInfo.getTotal());
         map.put("rows",pageInfo.getList());
@@ -51,10 +56,51 @@ public class CustomerService extends BaseService<Customer> {
                 customer.getPhone(),customer.getFax(), customer.getWebSite(),customer.getAddress(),customer.getFr(),
                 customer.getNyye(),customer.getKhyh(),customer.getKhzh());
         customer.setUpdateDate(new Date());
-        customer.setIsValid(1);
+
         AssertUtil.isTrue(customerDao.insert(customer)<1,"更新失败");
     }
 
+    /**
+     * 添加客户
+     * @param customer
+     */
+    public void addCustomer(Customer customer) {
+        //基本参数校验
+        checkCustomerParams(customer.getName(),customer.getArea(),customer.getMyd(),customer.getXyd(),customer.getPostCode(),
+                customer.getPhone(),customer.getFax(), customer.getWebSite(),customer.getAddress(),customer.getFr(),
+                customer.getNyye(),customer.getKhyh(),customer.getKhzh());
+        //检验客户名称唯一性
+        Customer customerDb=customerDao.selectByNmae(customer.getName());
+        //若客户名称存在
+        if(null!=customerDb){
+            //若客户是无效客户,执行更新操作
+            //TODO 若客户是无效客户,执行更新操作
+            if(customerDb.getIsValid()==0){
+                customer.setId(customerDb.getId());
+                customerDb=customer;
+                customerDb.setUpdateDate(new Date());
+                //调用更新方法
+                updateCustomer(customerDb);
+                return;
+            }
+            AssertUtil.isTrue(customerDb.getIsValid()==1,"客户名称已存在");
+        }
+        //参数设置
+        String now = DateFormatUtils.format(new Date(),"yyyyMMdd");
+        Integer random=RandomUtils.nextInt(100,999);
+        String khno="KH"+now+random;
+        //客户编号
+        customer.setKhno(khno);
+        //客户有效
+        customer.setIsValid(1);
+        customer.setState(0);
+        //客户创建时间
+        customer.setCreateDate(new Date());
+        //客户更新时间
+        customer.setUpdateDate(new Date());
+        //保存数据
+        AssertUtil.isTrue(customerDao.insert(customer)<1,"添加失败");
+    }
     /**
      * 检验参数
      */
@@ -84,4 +130,6 @@ public class CustomerService extends BaseService<Customer> {
         AssertUtil.isTrue(StringUtils.isBlank(khyh),"请输入开户银行");
         AssertUtil.isTrue(StringUtils.isBlank(khzh),"请输入开户账号");
     }
+
+
 }

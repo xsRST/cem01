@@ -5,6 +5,7 @@ import com.shsxt.base.exceptions.ParamException;
 
 /**
  * 断言
+ * @author 殇丶无求
  */
 public class AssertUtil {
     public static void isTrue(Boolean flag,String msg){

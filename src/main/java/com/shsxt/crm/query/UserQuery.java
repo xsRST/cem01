@@ -1,10 +1,15 @@
 package com.shsxt.crm.query;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.shsxt.base.BaseQuery;
 
 import java.util.Date;
 
+/**
+ * @author 殇丶无求
+ */
 public class UserQuery extends BaseQuery {
+
     private Integer id;
 
     private String userName;
@@ -19,8 +24,9 @@ public class UserQuery extends BaseQuery {
 
     private Integer isValid;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateDate;
 
     public Integer getId() {

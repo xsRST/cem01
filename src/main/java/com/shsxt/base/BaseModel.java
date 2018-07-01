@@ -5,17 +5,24 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
+/**
+ * @author 殇丶无求
+ */
 public class BaseModel {
 
-    private Integer id; //主键
-    private Integer isValid; //是否有效
+    /**主键**/
+    private Integer id;
+    /**是否有效*/
+    private Integer isValid;
+    /**创建时间**/
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT"+8)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createDate; //创建时间
+    private Date createDate;
 
+    /**更新时间**/
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT"+8)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date updateDate; //创建时间
+    private Date updateDate;
 
     public Integer getId() {
         return id;

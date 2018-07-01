@@ -7,6 +7,10 @@ import org.springframework.dao.DataAccessException;
 
 import java.util.List;
 
+/**
+ * @author 殇丶无求
+ * @param <T>
+ */
 public abstract class BaseService<T> {
     @Autowired
     private BaseDao<T> baseDao;

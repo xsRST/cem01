@@ -1,8 +1,13 @@
 package com.shsxt.base;
 
+/**
+ * @author 殇丶无求
+ */
 public class BaseQuery {
-    private Integer page=1; //当前页码
-    private Integer rows=10; //每页显示数量
+    /**当前页码**/
+    private Integer page=1;
+    /**每页显示数量**/
+    private Integer rows=10;
 
     public Integer getPage() {
         return page;

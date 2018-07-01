@@ -15,6 +15,9 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author 殇丶无求
+ */
 @Service
 public class UserService extends BaseService<User> {
 

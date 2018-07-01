@@ -4,6 +4,10 @@ import org.springframework.dao.DataAccessException;
 
 import java.util.List;
 
+/**
+ * @author 殇丶无求
+ * @param <T>
+ */
 public interface  BaseDao<T> {
 
     /**
@@ -25,6 +29,7 @@ public interface  BaseDao<T> {
      * 根据主键ID查看记录
      * @param id
      * @return
+     * @throws DataAccessException
      */
     public T selectById(Integer id)throws DataAccessException;
 
@@ -33,6 +38,7 @@ public interface  BaseDao<T> {
      * 根据条件查询多个记录
      * @param baseQuery
      * @return
+     * @throws DataAccessException
      */
     public List<T> selectByParams(BaseQuery baseQuery)throws DataAccessException;
 

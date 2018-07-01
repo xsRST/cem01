@@ -20,6 +20,7 @@
     select <include refid="Base_Column_List" />
     from t_cus_dev_plan
     where is_valid=1 and sale_chance_id=#{saleChanceId}
+    order by id desc
   </select>
   <!--添加计划-->
   <insert id="insert" parameterType="cusDevPlan" >

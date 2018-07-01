@@ -5,6 +5,9 @@ import com.shsxt.crm.vo.CusDevPlan;
 
 import java.util.List;
 
+/**
+ * @author 殇丶无求
+ */
 public interface CusDevPlanDao extends BaseDao<CusDevPlan> {
 
     /**
