@@ -26,6 +26,15 @@ public class CustomerService extends BaseService<Customer> {
     private CustomerDao customerDao;
 
     /**
+     * 删除客户
+     * @param ids
+     */
+    public void deleteCustomer(String ids) {
+        Integer len=ids.length();
+        System.out.println(len);
+        AssertUtil.isTrue(StringUtils.isBlank(ids)||customerDao.delete(ids)<1,"删除失败");
+    }
+    /**
      * 查询客户列表
      * @param customerQuery
      * @return
@@ -57,7 +66,7 @@ public class CustomerService extends BaseService<Customer> {
                 customer.getNyye(),customer.getKhyh(),customer.getKhzh());
         customer.setUpdateDate(new Date());
 
-        AssertUtil.isTrue(customerDao.insert(customer)<1,"更新失败");
+        AssertUtil.isTrue(customerDao.update(customer)<1,"更新失败");
     }
 
     /**
@@ -130,6 +139,7 @@ public class CustomerService extends BaseService<Customer> {
         AssertUtil.isTrue(StringUtils.isBlank(khyh),"请输入开户银行");
         AssertUtil.isTrue(StringUtils.isBlank(khzh),"请输入开户账号");
     }
+
 
 
 }

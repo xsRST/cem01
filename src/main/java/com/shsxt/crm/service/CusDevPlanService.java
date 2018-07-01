@@ -74,8 +74,6 @@ public class CusDevPlanService extends BaseService<CusDevPlan>{
         AssertUtil.isTrue(null==saleChanceId,"请选择客户");
         AssertUtil.isTrue(null==id,"请选择删除计划");
         CusDevPlan cusDevPlan=new CusDevPlan();
-        cusDevPlan.setId(id);
-        cusDevPlan.setIsValid(0);
         AssertUtil.isTrue(cusDevPlanDao.update(cusDevPlan)<1,"删除失败");
     }
 

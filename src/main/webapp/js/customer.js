@@ -1,4 +1,19 @@
 /**
+ * 联系人管理
+ */
+function openCustomerLinkMan() {
+
+    var rows=$("#dg").datagrid("selections");
+    if(rows.length<1){
+        $.messager.alert("系统消息","请选择想要查看的联系人","info");
+        return
+    }else if(rows.length>1){
+        $.messager.alert("系统消息","只能选择一条记录","info");
+    }
+    window.parent.openTab("联系人管理",ctx+"/linkman/"+id+"index","icon-lxr");
+}
+
+/**
  * 关闭弹出框
  */
 function closeDialog() {
@@ -43,14 +58,13 @@ function saveOrUpdateCustomer() {
     $("#fm").form("submit",{
         url:url,
         onSubmit:function (param) {
-
         },
         success:function (result) {
             var result=JSON.parse(result);
            if(result.code==200){ //操作成功
                $.messager.alert("来自crm",result.msg,"success")
-               $("#fm").form("load");
-
+               $("#dg").datagrid("load");
+               $("#dlg").dialog("close")
            }else{
                $.messager.alert("来自crm",result.msg,"info")
            }
@@ -62,9 +76,30 @@ function saveOrUpdateCustomer() {
  * 删除客户
  */
 function deleteCustomer() {
-
-    $.messager.confirm("删除客户","确认删除客户",function (flag) {
-
+    var row = $("#dg").datagrid("getSelections");
+    if(row.length<1){
+        $.messager.alert("修改客户","请选择需要删除的客户","warning")
+        return;
+    }
+    var ids=[];
+    for(var i=0;i<row.length;i++){
+        ids.push(row[i].id);
+    }
+    var url=ctx+'/customer/delete'
+    $.messager.confirm("删除客户","确认删除"+row.length+"条客户记录吗?",function (flag) {
+        if(flag){
+            $.post(url,{ids:ids.join(",")},function (result) {
+                //删除成功
+                if(result.code==200){
+                    $.messager.alert('提示', result.msg, 'info', function() {
+                        $("#dg").datagrid('load'); // 重新加载
+                    })
+                }
+                else {
+                    $.messager.alert('提示', result.msg, 'info')
+                }
+            });
+        }
     })
 }
 

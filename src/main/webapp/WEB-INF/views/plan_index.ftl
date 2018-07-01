@@ -10,7 +10,6 @@
            url="${ctx}/saleChance/querySaleChancesByParams?state=1" fit="true" toolbar="#tb" >
         <thead>
         <tr>
-            <th checkbox="true">编号</th>
             <th field="id" width="50" align="center">编号</th>
             <th field="chanceSource" width="100" align="center" >机会来源</th>
             <th field="customerName" width="50" align="center">客户名称</th>

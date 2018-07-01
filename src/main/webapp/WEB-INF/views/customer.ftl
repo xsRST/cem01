@@ -12,11 +12,11 @@
         <tr>
             <th checkbox="true">编号</th>
             <th field="id" hidden="hidden">ID</th>
-            <th field="khno" width="100" align="center">客户编号</th>
-            <th field="name" width="50" align="center" >客户名称</th>
+            <th field="khno" width="150" align="center">客户编号</th>
+            <th field="name" width="80" align="center" >客户名称</th>
             <th field="cusManager" width="50" align="center">客户经理</th>
-            <th field="level" width="50" align="center" >客户等级</th>
-            <th field="phone" width="200" align="center">联系电话</th>
+            <th field="level" width="100" align="center" >客户等级</th>
+            <th field="phone" width="150" align="center">联系电话</th>
         </tr>
     </thead>
     <thead>
@@ -42,6 +42,9 @@
     <a href="javascript:openAddCustomer()" class="easyui-linkbutton" iconCls="icon-add" plain="true">创建</a>
     <a href="javascript:openUpdateCustomer()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
     <a href="javascript:deleteCustomer()"  class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+    <a href="javascript:openCustomerLinkMan()" class="easyui-linkbutton" iconCls="icon-lxr" plain="true">联系人管理</a>
+    <a href="javascript:openCustomerContact()" class="easyui-linkbutton" iconCls="icon-jwjl" plain="true">交往记录管理</a>
+    <a href="javascript:openCustomerOrder()" class="easyui-linkbutton" iconCls="icon-jwjl" plain="true">历史订单查看</a>
     <br/>
     客户编号:<input type="text" id="khno" />
     客户名称:<input type="text" id="name"/>

@@ -22,6 +22,23 @@ public class CustomerController extends BaseController<Customer> {
     @Resource
     private CustomerService customerService;
 
+    /**
+     * 删除客户
+     * @param ids
+     * @return
+     */
+    @RequestMapping("delete")
+    @ResponseBody
+    public ResultInfo<Customer> delete(String ids){
+
+        customerService.deleteCustomer(ids);
+        return success("更新成功");
+    }
+    /**
+     * 添加客户
+     * @param customer
+     * @return
+     */
     @RequestMapping("add")
     @ResponseBody
     public ResultInfo<Customer> add(Customer customer){

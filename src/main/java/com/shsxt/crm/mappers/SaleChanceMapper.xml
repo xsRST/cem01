@@ -125,7 +125,7 @@
   <!--删除销售机会数据-->
   <update id="delete" parameterType="int" >
     update t_sale_chance
-    set is_valid=0
+    set is_valid=0,update_date=now()
     where id in
     <foreach collection="array" item="id" open="(" close=")" separator=",">
       #{id}

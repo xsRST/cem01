@@ -1,9 +1,11 @@
+$(document).ready(function () {
     $("#dg").edatagrid({
         url: 'list_plan', // 使用相对路径
         saveUrl: 'add',
         updateUrl: 'update',
         destroyUrl: 'delete'
     });
+})
 
 /**
  * 添加计划
