@@ -13,7 +13,7 @@
     order by id desc
   </select>
   <!--添加计划-->
-  <insert id="insert" parameterType="cusDevPlan" >
+  <insert id="insert" parameterType="cusDevPlan" keyProperty="id" keyColumn="id" useGeneratedKeys="true">
     insert into t_cus_dev_plan (id, sale_chance_id, plan_item,
                                 plan_date, exe_affect, create_date,
                                 update_date, is_valid)

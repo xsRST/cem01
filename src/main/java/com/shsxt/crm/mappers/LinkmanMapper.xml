@@ -3,7 +3,7 @@
 <mapper namespace="com.shsxt.crm.dao.LinkmanDao" >
 
     <sql id="Base_column">
-       id,cus_id,link_name,sex,zhiwei,office_phone,phone
+       id,cus_id,link_name,sex,zhiwei,office_phone,phone,is_valid
     </sql>
     <!--根据客户ID查询客户列表-->
     <select id="selectByParams" parameterType="linkmanQuery" resultType="linkman">
@@ -13,8 +13,27 @@
             is_valid=1 and cus_id=#{cusId}
         </where>
     </select>
+    <!--根据条件查询客户列表-->
+    <select id="queryByParams" parameterType="linkmanQuery" resultType="linkman">
+        select <include refid="Base_column"/>
+        from t_customer_linkman
+        <where>
+            <if test="null != cusId">
+                and cus_id=#{cusId}
+            </if>
+            <if test="null != linkName and linkName != '' ">
+                and link_name=#{linkName}
+            </if>
+            <if test="null != sex and sex != '' ">
+                and sex=#{sex}
+            </if>
+            <if test="null != phone and phone != '' ">
+                and phone=#{phone}
+            </if>
+        </where>
+    </select>
     <!--添加联系人-->
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="linkman">
+    <insert id="insert" keyColumn="id" keyProperty="id" useGeneratedKeys="true" parameterType="linkman">
         insert into t_customer_linkman(cus_id,link_name,sex,zhiwei,office_phone,phone,
                                        is_valid,create_date,update_date)
         values(#{cusId},#{linkName},#{sex},#{zhiwei},#{officePhone},#{phone},#{isValid},
@@ -37,6 +56,6 @@
         update t_customer_linkman
         set is_valid=0,
             update_date=now()
-
+        where id=#{id}
     </update>
 </mapper>

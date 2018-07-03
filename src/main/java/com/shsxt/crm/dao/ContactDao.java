@@ -1,22 +1,22 @@
 package com.shsxt.crm.dao;
 
 import com.shsxt.base.BaseDao;
-import com.shsxt.crm.query.LinkmanQuery;
-import com.shsxt.crm.vo.Linkman;
+import com.shsxt.crm.query.ContactQuery;
+import com.shsxt.crm.vo.Contact;
 
 import java.util.List;
 
 /**
  * @author 殇丶无求
  */
-public interface LinkmanDao extends BaseDao<Linkman> {
+public interface ContactDao extends BaseDao<Contact> {
 
     /**
      * 通过客户Id和联系人名称,手机号,性别获取获取记录
-     * @param linkmanQuery
+     * @param contactQuery
      * @return
      */
-    List<Linkman> queryByParams(LinkmanQuery linkmanQuery);
+    List<Contact> queryByParams(ContactQuery contactQuery);
 
     /**
      * 删除单个客户联系人

@@ -5,7 +5,7 @@
 </head>
 <body style="margin: 1px">
 <#--客户基本信息-->
-<div id="p" class="easyui-panel" title="客户基本信息" style="width:700px;height: 100px;padding: 10px">
+<div id="p" class="easyui-panel" title="客户基本信息" style="width:700px;height: 150px;padding: 10px">
     <table cellspacing="8px">
         <input type="hidden" id="customerId" name="saleChanceId" value="${customer.id?if_exists}"/>
         <tr>
@@ -19,7 +19,7 @@
 </div>
 <br/>
 <#--联系人信息管理-->
-<table id="dg" title="联系人信息管理" style="width:700px;height:250px"
+<table id="dg" title="联系人信息管理" style="width:700px;height:350px"
        toolbar="#toolbar" idField="id" pagination="true"
        rownumbers="true" fitColumns="true" singleSelect="true">
     <thead>

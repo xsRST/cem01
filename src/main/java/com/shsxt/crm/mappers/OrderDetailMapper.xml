@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shsxt.crm.dao.OrderDetailDao" >
+
+    <sql id="Base_column">
+       id,order_id,goods_name,goods_num,uni,price,sum,is_valid
+    </sql>
+    <!--根据订单ID查询订单详细列表-->
+    <select id="selectByParams" parameterType="orderQuery" resultType="orderDetail">
+        select <include refid="Base_column"/>
+        from t_order_details
+        <where>
+            is_valid=1 and order_id=#{orderId}
+        </where>
+    </select>
+    <!--根据主键查询订单详情-->
+    <select id="selectById" parameterType="int" resultType="orderDetail">
+        select <include refid="Base_column"/>
+        from t_order_details
+        where is_valid=1 and id=#{id}
+    </select>
+
+    <!--根据订单ID获取总金额-->
+    <select id="getTotalPrice" resultType="int" parameterType="long">
+        select sum(sum)
+        from t_order_details
+        where
+            is_valid=1 and order_id=#{orderId}
+    </select>
+</mapper>

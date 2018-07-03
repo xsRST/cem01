@@ -74,6 +74,8 @@ public class CusDevPlanService extends BaseService<CusDevPlan>{
         AssertUtil.isTrue(null==saleChanceId,"请选择客户");
         AssertUtil.isTrue(null==id,"请选择删除计划");
         CusDevPlan cusDevPlan=new CusDevPlan();
+        cusDevPlan.setIsValid(0);
+        cusDevPlan.setId(id);
         AssertUtil.isTrue(cusDevPlanDao.update(cusDevPlan)<1,"删除失败");
     }
 
@@ -88,7 +90,6 @@ public class CusDevPlanService extends BaseService<CusDevPlan>{
          */
         checkParams(cusDevPlan.getId(),saleChanceId,cusDevPlan.getPlanItem(),cusDevPlan.getExeAffect(),cusDevPlan.getPlanDate());
         cusDevPlan.setSaleChanceId(saleChanceId);
-        cusDevPlan.setIsValid(1);
         AssertUtil.isTrue(cusDevPlanDao.update(cusDevPlan)<1,"更新失败");
     }
 

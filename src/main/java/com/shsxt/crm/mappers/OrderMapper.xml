@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shsxt.crm.dao.OrderDao" >
+
+    <sql id="Base_column">
+       id,cus_id,order_no,order_date,address,state,is_valid
+    </sql>
+    <!--根据客户ID查询订单列表-->
+    <select id="selectByParams" parameterType="orderQuery" resultType="order">
+        select <include refid="Base_column"/>
+        from t_customer_order
+        <where>
+            is_valid=1 and cus_id=#{cusId}
+        </where>
+    </select>
+    <!--根据主键查询订单详情-->
+    <select id="selectById" parameterType="int" resultType="order">
+        select <include refid="Base_column"/>
+        from t_customer_order
+        where is_valid=1 and id=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shsxt.crm.dao.ContactDao" >
+
+    <sql id="Base_column">
+       id,cus_id,contact_time,address,overview,is_valid
+    </sql>
+    <!--根据客户ID查询客户列表-->
+    <select id="selectByParams" parameterType="contactQuery" resultType="contact">
+        select <include refid="Base_column"/>
+        from t_customer_contact
+        <where>
+            is_valid=1 and cus_id=#{cusId}
+        </where>
+    </select>
+    <!--添加交往-->
+    <insert id="insert" keyColumn="id" keyProperty="id" useGeneratedKeys="true" parameterType="contact">
+        insert into t_customer_contact(cus_id,contact_time,address,overview,
+                                       is_valid,create_date,update_date)
+        values(#{cusId},#{contactTime},#{address},#{overview},
+                  #{isValid},#{createDate},#{updateDate})
+    </insert>
+    <!--更新交往-->
+    <update id="update" parameterType="contact">
+        update t_customer_contact
+        set
+            cus_id=#{cusId},
+            contact_time=#{contactTime},
+            address=#{address},
+            overview=#{overview},
+            update_date=#{updateDate}
+        where id=#{id}
+    </update>
+    <!--删除交往-->
+    <update id="delete" parameterType="int">
+        update t_customer_contact
+        set is_valid=0,
+            update_date=now()
+        where id=#{id}
+    </update>
+</mapper>

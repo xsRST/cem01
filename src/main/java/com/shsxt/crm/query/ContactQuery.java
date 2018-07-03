@@ -5,7 +5,7 @@ import com.shsxt.base.BaseQuery;
 /**
  * @author 殇丶无求 
  */
-public class LinkmanQuery extends BaseQuery {
+public class ContactQuery extends BaseQuery {
     /**客户ID**/
     private Integer cusId;
 

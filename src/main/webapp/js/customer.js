@@ -3,14 +3,30 @@
  */
 function openCustomerLinkMan() {
 
-    var rows=$("#dg").datagrid("selections");
+    var rows=$("#dg").datagrid("getSelections");
     if(rows.length<1){
         $.messager.alert("系统消息","请选择想要查看的联系人","info");
         return
     }else if(rows.length>1){
         $.messager.alert("系统消息","只能选择一条记录","info");
     }
-    window.parent.openTab("联系人管理",ctx+"/linkman/"+id+"index","icon-lxr");
+    var id=rows[0].id;
+    window.parent.openTab("联系人管理",ctx+"/linkman/"+id+"/index","icon-lxr");
+}
+
+/**
+ * 交往记录
+ */
+function openCustomerContact() {
+    var rows=$("#dg").datagrid("getSelections");
+    if(rows.length<1){
+        $.messager.alert("系统消息","请选择客户","info");
+        return
+    }else if(rows.length>1){
+        $.messager.alert("系统消息","只能选择一条记录","info");
+    }
+    var id=rows[0].id;
+    window.parent.openTab("交往记录",ctx+"/contact/"+id+"/index","icon-lxr");
 }
 
 /**

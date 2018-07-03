@@ -9,25 +9,29 @@ $(document).ready(function () {
 
 
 /**
- * 添加计划
+ * 添加联系人
  */
 function addPlan() {
     $('#dg').edatagrid('addRow');
 }
 
 /**
- * 删除计划
+ * 删除联系人
  */
 function deletePlan() {
     $('#dg').edatagrid('destroyRow');
 }
 
 /**
- * 保存计划
+ * 保存联系人
  */
 function savePlan() {
     $('#dg').edatagrid('saveRow');
 }
+
+/**
+ * 撤销
+ */
 function cancelPlan() {
     $('#dg').edatagrid('cancelRow');
 }
