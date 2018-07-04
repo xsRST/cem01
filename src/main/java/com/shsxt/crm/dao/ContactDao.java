@@ -7,6 +7,7 @@ import com.shsxt.crm.vo.Contact;
 import java.util.List;
 
 /**
+ * 交易往来
  * @author 殇丶无求
  */
 public interface ContactDao extends BaseDao<Contact> {
@@ -24,4 +25,12 @@ public interface ContactDao extends BaseDao<Contact> {
      * @return
      */
     Integer delete(Integer cusId);
+
+    /**
+     * 测试映射
+     * @param id
+     * @return
+     */
+    /*@SelectProvider(type = ContactProvider.class,method = "test")
+    Integer test(Integer id);*/
 }

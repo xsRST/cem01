@@ -27,6 +27,7 @@ function deletePlan() {
  */
 function savePlan() {
     $('#dg').edatagrid('saveRow');
+    $("#dg").edatagrid("load");
 }
 
 /**

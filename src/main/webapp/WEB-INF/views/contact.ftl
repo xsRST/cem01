@@ -5,7 +5,7 @@
     <script type="text/javascript" src="${ctx}/js/common.js"></script>
 </head>
     <body style="margin: 1px">
-        <div id="p" class="easyui-panel" title="客户基本信息" style="width: 700px;height: 150px;padding: 10px">
+        <div id="p" class="easyui-panel" title="客户基本信息" style="width: 700px;height: 100px;padding: 10px">
             <table cellspacing="8px">
                 <input type="hidden" id="customerId" name="customerId" value="${customer.id?c}"/>
                 <tr>

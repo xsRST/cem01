@@ -1,9 +1,10 @@
 $(function(){
 	var lossId=$("#lossId").val();
 	$("#dg").edatagrid({
-		url:ctx+"/customer_loss/customerReprievesByLossId?lossId="+lossId,
-		saveUrl:ctx+"/customer_loss/insert?lossId="+lossId,
-		updateUrl:ctx+"/customer_loss/update?lossId="+lossId
+		url:ctx+"/customer_reprieve/customerReprievesByLossId?lossId="+lossId,
+		saveUrl:ctx+"/customer_reprieve/insert?lossId="+lossId,
+		updateUrl:ctx+"/customer_reprieve/update?lossId="+lossId,
+        destroyUrl:ctx+"/customer_reprieve/delete"
 	});
 	
 	var state= $("#state").val();
@@ -35,7 +36,7 @@ function delCustomerRepri(){
 		if(r){
 			$.ajax({
 				type:"post",
-				url:ctx+"/customer_repri/delete",
+				url:ctx+"/customer_reprieve/delete",
 				data:"id="+rows[0].id,
 				dataType:"json",
 				success:function(data){
@@ -50,7 +51,9 @@ function delCustomerRepri(){
 	});
 }
 
-
+/**
+ * 确认流失
+ */
 function updateCustomerLossState(){
 	/**
 	 * 1.lossId
@@ -64,7 +67,7 @@ function updateCustomerLossState(){
 					$.ajax({
 						type:"post",
 						url:ctx+"/customer_loss/updateCustomerLossState",
-						data:"lossId="+$("#lossId").val()+"&lossReason="+val+"&state=1",
+						data:"id="+$("#lossId").val()+"&lossReason="+val+"&state=1",
 						dataType:"json",
 						success:function(data){
 							if(data.code==200){

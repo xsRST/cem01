@@ -30,6 +30,21 @@ function openCustomerContact() {
 }
 
 /**
+ * 历史订单查看
+ */
+function openCustomerOrder() {
+    var rows=$("#dg").datagrid("getSelections");
+    if(rows.length<1){
+        $.messager.alert("系统消息","请选择想要查看的记录");
+        return;
+    }if(rows.length>1){
+        $.messager.alert("系统消息","只能选择一条记录查看");
+        return;
+    }
+    var id=rows[0].id;
+    window.parent.openTab("查看历史订单",ctx+"/order/"+id+"/index","icon-lsdd")
+}
+/**
  * 关闭弹出框
  */
 function closeDialog() {

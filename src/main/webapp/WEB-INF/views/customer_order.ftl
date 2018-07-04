@@ -5,22 +5,20 @@
 </head>
 
 
-<body style="margin: 15px">
+<body style="margin: 1px">
 
-	<div id="p" class="easyui-panel" title="客户信息" style="height:250px">
-		<table cellspacing="8px">
-			<input type="hidden" id="cid" name="cid" value="${customer.id}" />
-			<tr>
-				<td>客户名称：</td>
-				<td><input type="text" id="customerName" name="customerName"
-					readonly="readonly" value="${(customer.name)!}" /></td>
-				<td></td>
-				<td>客户编号</td>
-				<td><input type="text" id="khno" readonly="readonly"
-					value="${(customer.khno)!}" /></td>
-			</tr>
-		</table>
-	</div>
+		<div id="p" class="easyui-panel" title="客户基本信息" style="width: 700px;height: 100px;padding: 10px">
+			<table cellspacing="8px">
+				<input type="hidden" id="customerId" name="customerId" value="${customer.id?c}"/>
+				<tr>
+					<td>客户编号：</td>
+					<td><input type="text" id="customerNo" name="khno" readonly="readonly" value="${customer.khno?if_exists}"/></td>
+					<td>客户名称：</td>
+					<td><input type="text" id="customerName" name="customerName" readonly="readonly" value="${customer.name?default('')}" /></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				</tr>
+			</table>
+		</div>
 	<br />
 
 	<table id="dg" class="easyui-datagrid" title="订单列表"

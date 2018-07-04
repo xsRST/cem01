@@ -1,12 +1,11 @@
 package com.shsxt.crm.controller;
 
 import com.shsxt.base.BaseController;
-import com.shsxt.crm.model.ResultInfo;
 import com.shsxt.crm.query.OrderQuery;
-import com.shsxt.crm.service.OrderService;
 import com.shsxt.crm.service.CustomerService;
-import com.shsxt.crm.vo.Order;
+import com.shsxt.crm.service.OrderService;
 import com.shsxt.crm.vo.Customer;
+import com.shsxt.crm.vo.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,7 +48,7 @@ public class OrderController extends BaseController<Order> {
     }
 
     /**
-     * 跳转到联系人管理页面
+     * 跳转到订单管理页面
      * @return
      */
     @RequestMapping("{customerId}/index")

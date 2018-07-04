@@ -1,9 +1,8 @@
 function searchCustomerLosses(){
 	$("#dg").datagrid("load",{
 		cusName:$("#s_cusName").val(),
-		cusManager:$("#s_cusManager").combobox("getValue"),
-		cusNo:$("#s_cusNo").val(),
-		createDate:$("#s_time").datebox("getValue")
+		cusManager:$("#s_cusManager").val(),
+		state:$("#s_state").combobox("getValue")
 	});
 }
 
@@ -12,10 +11,10 @@ $(function(){
 	$("#dg").datagrid({
 		rowStyler:function(index,rowData){
 			if(rowData.state==0){
-				return 'background-color:yellow';
+				return 'background-color:#F2F5A9';
 			}
 			if(rowData.state==1){
-				return 'background-color:red';
+				return 'background-color:#FE9A2E';
 			}
 		}
 	});
@@ -34,15 +33,14 @@ function formatterState(val){
 
 function formatterOp(val,rowData){
 	if(rowData.state==0){
-		var href="javascript:openCustomerRepriDetailTab('添加暂缓处理_'+"+rowData.id+","+rowData.id+")";
+		var href="javascript:openCustomerRepriDetailTab('客户流失暂缓措施管理',"+rowData.id+")";
 		return "<a href="+href+">添加暂缓处理</a>";	
 	}
 	if(rowData.state==1){
-		var href="javascript:openCustomerRepriDetailTab('流失详情查看_'+"+rowData.id+","+rowData.id+")";
-		return "<a href="+href+">查看流失详情</a>";	
+        return "客户确认流失";
 	}
 }
 
 function openCustomerRepriDetailTab(title,lossId){
-	window.parent.openTab(title,"customer_loss/"+lossId+"/customerRepriPage");
+	window.parent.openTab(title,ctx+"/customer_reprieve/index?lossId="+lossId,"icon-khlsgl");
 }
