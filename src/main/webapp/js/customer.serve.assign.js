@@ -17,7 +17,7 @@ function openAssignDlg(){
 
 function addCustomerServeAssign(){
 	$("#fm").form("submit",{
-		url:ctx+"/server/update",
+		url:ctx+"/customer_serve/update",
 		onSubmit:function(params){
 		params.state="2";
 		//params.serviceProcePeople=$.cookie("trueName");

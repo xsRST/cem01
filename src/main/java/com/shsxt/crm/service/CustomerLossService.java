@@ -44,6 +44,9 @@ public class CustomerLossService extends BaseService<CustomerLoss> {
         Integer state = customerLoss.getState();
         AssertUtil.isTrue(null==state,"请选择流失状态");
         customerLoss.setCreateDate(new Date());
+        if(customerLoss.getState()==1){
+            customerLoss.setConfirmLossTime(new Date());
+        }
         customerLoss.setUpdateDate(new Date());
         customerLoss.setIsValid(1);
         AssertUtil.isTrue(customerLossDao.updateCustomerLossState(customerLoss)<1,"更新状态失败");

@@ -18,7 +18,7 @@ public class CustomerLossQuery extends BaseQuery {
     }
 
     public void setCusName(String cusName) {
-        this.cusName = cusName;
+        this.cusName = cusName.trim();
     }
 
     public String getCusManager() {
@@ -26,7 +26,7 @@ public class CustomerLossQuery extends BaseQuery {
     }
 
     public void setCusManager(String cusManager) {
-        this.cusManager = cusManager;
+        this.cusManager = cusManager.trim();
     }
 
     public Integer getState() {

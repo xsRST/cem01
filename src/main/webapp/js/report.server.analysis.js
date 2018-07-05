@@ -1,14 +1,14 @@
 $(function () {
     var data=[];
     $.ajax({
-        url:"find_server_analysis",
+        url:ctx+"/report/find_server_analysis",
         async:false,//同步请求
         type:"JSON",
         success:function (result) {
             var result=result.result;
             for(var d in result){
                 var obj={};
-                obj.name=result[d].type;
+                obj.name=result[d].serveType;
                 obj.y=result[d].amount;
                 data.push(obj);
             }

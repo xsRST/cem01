@@ -5,7 +5,7 @@
 </head>
 <body>
 	<table id="dg" class="easyui-datagrid"  pagination=true 
-	     rownumbers=true    toolbar="#tb" fit=true url="${ctx}/server/queryCustomerServesByParams?state=3">   
+	     rownumbers=true    toolbar="#tb" fit=true url="${ctx}/customer_serve/list?state=3">
     <thead>   
         <tr>
             <th field='cb' checkbox=true >id</th>    
@@ -13,7 +13,6 @@
             <th field='overview'>概要</th>   
             <th field='customer'  >客户名称</th>
             <th field='overview'>概要</th>
-            <th field='linkMan'>未分配</th>
             <th field='serviceRequest'>请求内容</th>
             <th field='createPeople'>创建人</th>
             <th field='createMan'>创建人</th>

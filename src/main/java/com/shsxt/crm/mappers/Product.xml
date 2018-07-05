@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shsxt.crm.dao.ProductDao" >
+
+  <sql id="Base_List">
+
+  </sql>
+  <!--条件查询-->
+  <select id="selectByParams" parameterType="productQuery" resultType="product">
+    select id,product_name,model,unit,price,store,remark,
+    is_valid,create_date,update_date
+    from t_product
+    <where>
+      is_valid=1
+      <if test="null!=productName and productName != '' ">
+        and product_name like concat('%',#{productName},'%')
+      </if>
+    </where>
+  </select>
+
+  <!--添加-->
+  <insert id="insert" keyColumn="id" keyProperty="id" useGeneratedKeys="true" parameterType="product">
+    insert into t_product(product_name,model,unit,price,store,remark,
+                          is_valid,create_date,update_date)
+    values(#{productName},#{model},#{unit},#{price},#{store},#{remark},
+          #{isValid},#{createDate},#{updateDate})
+  </insert>
+  <!--更新-->
+  <update id="update" parameterType="product">
+    update t_product
+    set
+      product_name=#{productName},
+      model=#{model},
+      unit=#{unit},
+      price=#{price},
+      store=#{store},
+      remark=#{remark},
+      update_date=#{updateDate}
+    where id=#{id}
+  </update>
+  <!--删除-->
+  <update id="deleteProduct" parameterType="string">
+    update t_product
+    set is_valid=0,
+      update_date=now()
+    where id in (${ids})
+  </update>
+</mapper>

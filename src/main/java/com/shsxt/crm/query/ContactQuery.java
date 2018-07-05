@@ -32,7 +32,7 @@ public class ContactQuery extends BaseQuery {
     }
 
     public void setLinkName(String linkName) {
-        this.linkName = linkName;
+        this.linkName = linkName.trim();
     }
 
     public String getSex() {

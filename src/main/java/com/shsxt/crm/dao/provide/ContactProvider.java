@@ -18,6 +18,7 @@ public class ContactProvider {
             if(null != id){
                 AND().WHERE("sale_chance_id=#{id}");
             }
+
         }}.toString();
         System.out.println(sql);
         return sql;

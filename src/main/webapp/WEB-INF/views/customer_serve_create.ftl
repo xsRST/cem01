@@ -13,7 +13,7 @@
 					<td>服务类型：</td>
 					<td><input class="easyui-combobox" id="serveType"
 						name="serveType"
-						data-options="panelHeight:'auto',editable:false,valueField:'dataDicValue',textField:'dataDicValue',url:'${ctx}/dic/queryDataDicValueByDataDicName?dataDicName=服务类型'" />&nbsp;<font
+						data-options="panelHeight:'auto',editable:false,valueField:'dataDicValue',textField:'dataDicValue',url:'${ctx}/datadic/findValues?dataDicName=服务类型'" />&nbsp;<font
 						color="red">*</font></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td>客户：</td>

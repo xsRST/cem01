@@ -1,6 +1,7 @@
 package com.shsxt.crm.query;
 
 import com.shsxt.base.BaseQuery;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -28,7 +29,7 @@ public class SaleChanceQuery extends BaseQuery {
     private String createMan;
 
     private String assignMan;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date assignTime;
 
     private Integer state;
@@ -36,9 +37,9 @@ public class SaleChanceQuery extends BaseQuery {
     private Integer devResult;
 
     private Integer isValid;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createDate;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updateDate;
 
     public Integer getId() {

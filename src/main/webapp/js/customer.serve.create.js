@@ -1,8 +1,9 @@
 function saveCustomerService(){
 	$("#fm").form("submit",{
-		url:ctx+"/server/insert",
+		url:ctx+"/customer_serve/insert",
 		onSubmit:function(params){
 			// params.createPeople=$.cookie("trueName");
+            params.state="1";
 			return $("#fm").form("validate"); //  表单校验 
 		},
 		success:function(data){ // 提交成成功后回调
@@ -18,4 +19,7 @@ function saveCustomerService(){
 			}
 		}
 	});
+}
+function resetValue() {
+    $("#fm").form("clear");
 }

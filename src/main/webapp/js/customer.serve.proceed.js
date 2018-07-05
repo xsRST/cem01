@@ -9,8 +9,9 @@ function openProceedDlg(){
 		$.messager.alert("来自crm","只能选择一条记录执行分配!","info");
 		return;
 	}
-	
+
 	$("#fm").form("load",rows[0]);
+    $("#serviceProcePeople").val(rows[0].assigner);
 	$("#dlg").dialog("open").dialog("setTitle","服务处理");
 }
 
@@ -18,7 +19,7 @@ function openProceedDlg(){
 
 function addCustomerServeServiceProceed(){
 	$("#fm").form("submit",{
-		url:ctx+"/server/update",
+		url:ctx+"/customer_serve/update",
 		onSubmit:function(params){
 		params.state="3";
 		   return 	$("#fm").form("validate");
@@ -33,4 +34,11 @@ function addCustomerServeServiceProceed(){
 			}
 		}
 	});
+}
+
+/**
+ * 关闭弹出框
+ */
+function closeCustomerServeDialog() {
+    $("#dlg").dialog("close");
 }

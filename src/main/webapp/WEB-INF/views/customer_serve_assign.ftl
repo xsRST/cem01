@@ -5,7 +5,7 @@
 </head>
 <body>
 	<table id="dg" class="easyui-datagrid"  pagination=true 
-	     rownumbers=true    toolbar="#tb" fit=true url="${ctx}/server/queryCustomerServesByParams?state=1">   
+	     rownumbers=true    toolbar="#tb" fit=true url="${ctx}/customer_serve/list?state=1">
     <thead>   
         <tr>
             <th field='cb' checkbox=true >id</th>    
@@ -67,7 +67,7 @@
 				<tr>
 					<td>分配给：</td>
 					<td><select name="assigner" class="easyui-combobox"
-						url="${ctx}/user/queryAllCustomerManager" valueField="trueName"
+						url="${ctx}/user/querySaleCustomerManager" valueField="trueName"
 						textField="trueName" style="width:200px;" editable="false"
 						panelHeight="auto">
 					</select></td>

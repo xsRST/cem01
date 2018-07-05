@@ -20,9 +20,9 @@ function openFeedBackDlg(){
 
 function addCustomerServeServiceFeedBack(){
 	$("#fm").form("submit",{
-		url:ctx+"/server/update",
+		url:ctx+"/customer_serve/update",
 		onSubmit:function(params){
-		params.state="5";
+		params.state="4";
 		   return 	$("#fm").form("validate");
 		},
 		success:function(data){

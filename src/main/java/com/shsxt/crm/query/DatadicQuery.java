@@ -1,12 +1,12 @@
-package com.shsxt.crm.vo;
+package com.shsxt.crm.query;
 
-import com.shsxt.base.BaseModel;
+import com.shsxt.base.BaseQuery;
 
 /**
  * 字典
  * @author 殇丶无求
  */
-public class Datadic extends BaseModel {
+public class DatadicQuery extends BaseQuery {
 
     /**字典名称**/
     private String dataDicName;
