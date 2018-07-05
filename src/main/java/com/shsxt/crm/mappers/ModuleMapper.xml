@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shsxt.crm.dao.ModuleDao" >
+
+  <!--条件查询-->
+  <select id="selectByParams" resultType="module">
+    select t1.id,t1.module_name,t1.module_style,t1.url,t1.parent_id,t2.module_name as parentName,t1.parent_opt_value,t1.grade,t1.opt_value,t1.orders,
+      t1.is_valid,t1.create_date,t1.update_date
+    from t_module t1 left join t_module t2 on t1.parent_id=t2.id
+    where t1.is_valid=1
+  </select>
+
+  <!--添加-->
+  <insert id="insert" keyColumn="id" keyProperty="id" useGeneratedKeys="true" parameterType="module">
+    insert into t_module(module_name,module_style,url,parent_id,parent_opt_value,grade,opt_value,orders,
+                          is_valid,create_date,update_date)
+    values(#{moduleName},#{moduleStyle},#{url},#{parentId},#{parentOptValue},#{grade},#{optValue},#{orders},
+          #{isValid},#{createDate},#{updateDate})
+  </insert>
+  <!--更新-->
+  <update id="update" parameterType="module">
+    update t_module
+    set
+      module_name=#{moduleName},
+      module_style=#{moduleStyle},
+      url=#{url},
+    <if test="null !=parentId and parentId &gt; 0">
+      parent_id=#{parentId},
+    </if>
+    <if test="null != parentOptValue and parentOptValue != '' ">
+      parent_opt_value=#{parentOptValue},
+    </if>
+      grade=#{grade},
+      opt_value=#{optValue},
+      orders=#{orders},
+      update_date=#{updateDate}
+    where id=#{id}
+  </update>
+  <!--删除-->
+  <update id="deleteModule" parameterType="string">
+    update t_module
+    set is_valid=0,
+      update_date=now()
+    where id in (${ids})
+  </update>
+
+  <!--根据ID获取模板操作权限-->
+  <select id="selectById" parameterType="int" resultType="module">
+    select id,module_name,module_style,opt_value
+    from t_module
+    where is_valid=1 and id=#{id}
+  </select>
+  <!--根据层级获取名称-->
+  <select id="findNameByGrade" parameterType="int" resultType="module">
+    select id,module_name
+    from t_module
+    where is_valid=1 and grade=#{grade}
+  </select>
+</mapper>

@@ -2,9 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shsxt.crm.dao.ProductDao" >
 
-  <sql id="Base_List">
-
-  </sql>
   <!--条件查询-->
   <select id="selectByParams" parameterType="productQuery" resultType="product">
     select id,product_name,model,unit,price,store,remark,
@@ -23,7 +20,7 @@
     insert into t_product(product_name,model,unit,price,store,remark,
                           is_valid,create_date,update_date)
     values(#{productName},#{model},#{unit},#{price},#{store},#{remark},
-          #{isValid},#{createDate},#{updateDate})
+           #{isValid},#{createDate},#{updateDate})
   </insert>
   <!--更新-->
   <update id="update" parameterType="product">

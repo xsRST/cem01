@@ -10,6 +10,7 @@
     <typeAliases>
         <package name="com.shsxt.crm.vo"/>
         <package name="com.shsxt.crm.query" />
+        <package name="com.shsxt.base.BaseQuery"/>
     </typeAliases>
     <plugins>
         <plugin interceptor="com.github.pagehelper.PageHelper">
