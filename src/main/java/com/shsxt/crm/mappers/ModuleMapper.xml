@@ -56,4 +56,19 @@
     from t_module
     where is_valid=1 and grade=#{grade}
   </select>
+
+  <!--获取所有资源,id,name,pId-->
+  <select id="findAll" resultType="moduleTree">
+    select id,module_name as name ,parent_id as pId,
+      is_valid,create_date,update_date
+    from t_module
+    where is_valid=1
+  </select>
+
+  <!--根据权限ID获取资源ID-->
+  <select id="findMIdByRoleId" parameterType="int" resultType="int">
+    select module_id
+    from t_permission
+    where  role_id=#{roleId}
+  </select>
 </mapper>

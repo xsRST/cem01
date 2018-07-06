@@ -6,6 +6,7 @@ import com.shsxt.base.BaseService;
 import com.shsxt.crm.dao.ModuleDao;
 import com.shsxt.crm.utils.AssertUtil;
 import com.shsxt.crm.vo.Module;
+import com.shsxt.crm.vo.ModuleTree;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -114,5 +115,23 @@ public class ModuleService extends BaseService<Module> {
     public List<Module> findNameByGrade(Integer grade) {
         AssertUtil.isTrue(null==grade||grade<0,"请选择层级");
         return moduleDao.findNameByGrade(grade);
+    }
+
+    /**
+     * 查询所有权限树,当前有权限的选中
+     * @param roleId
+     * @return
+     */
+    public List<ModuleTree> findAll(Integer roleId) {
+        //获取当前所有资源
+        List<ModuleTree> list=moduleDao.findAll();
+        //根据权限ID,获取对应资源ID,
+        List<Integer> mId=moduleDao.findMIdByRoleId(roleId);
+        for(ModuleTree moduleTree:list){
+            if (mId.contains(moduleTree.getId())) {
+                moduleTree.setChecked(true);
+            }
+        }
+        return  list;
     }
 }

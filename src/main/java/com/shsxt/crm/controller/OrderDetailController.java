@@ -25,7 +25,7 @@ public class OrderDetailController extends BaseController<OrderDetail> {
     @RequestMapping("getTotalPrice")
     @ResponseBody
     public ResultInfo getTotalPrice(Integer orderId){
-        Long total=orderDetailService.getTotalPrice(orderId);
+        Float total=orderDetailService.getTotalPrice(orderId);
         return  success(total);
     }
 

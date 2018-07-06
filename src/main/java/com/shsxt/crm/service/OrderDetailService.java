@@ -28,7 +28,7 @@ public class OrderDetailService extends BaseService<OrderDetail> {
      * @param orderId
      * @return
      */
-    public Long getTotalPrice(Integer orderId) {
+    public Float getTotalPrice(Integer orderId) {
         AssertUtil.isTrue(null==orderId,"请选择订单");
         return orderDetailDao.getTotalPrice(orderId);
     }

@@ -33,7 +33,7 @@ function openOrderDetailByOid(){
     });
     // 加载总金额
     $.post(ctx + "/orderDetail/getTotalPrice", {orderId : rows[0].id}, function(result) {
-        $("#totalMoney").val(result.result);
+        $("#sum").val(result.result);
     });
     $("#dg2").datagrid("load",{
     	orderId:rows[0].id, // 传递到后使用的参数，

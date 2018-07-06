@@ -2,6 +2,7 @@ package com.shsxt.crm.dao;
 
 import com.shsxt.base.BaseDao;
 import com.shsxt.crm.vo.Module;
+import com.shsxt.crm.vo.ModuleTree;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -27,4 +28,17 @@ public interface ModuleDao extends BaseDao<Module> {
      * @return
      */
     List<Module> findNameByGrade(@Param(value = "grade") Integer grade);
+
+    /**
+     * 获取所有资源
+     * @return
+     */
+    List<ModuleTree> findAll();
+
+    /**
+     * 根据权限ID,获取资源ID
+     * @param roleId
+     * @return
+     */
+    List<Integer> findMIdByRoleId(@Param(value = "roleId") Integer roleId);
 }

@@ -3,7 +3,7 @@
 <mapper namespace="com.shsxt.crm.dao.OrderDetailDao" >
 
     <sql id="Base_column">
-       id,order_id,goods_name,goods_num,uni,price,sum,is_valid
+       id,order_id,goods_name,goods_num,unit,price,sum,is_valid
     </sql>
     <!--根据订单ID查询订单详细列表-->
     <select id="selectByParams" parameterType="orderQuery" resultType="orderDetail">
@@ -21,7 +21,7 @@
     </select>
 
     <!--根据订单ID获取总金额-->
-    <select id="getTotalPrice" resultType="int" parameterType="long">
+    <select id="getTotalPrice" resultType="float" parameterType="int">
         select sum(sum)
         from t_order_details
         where

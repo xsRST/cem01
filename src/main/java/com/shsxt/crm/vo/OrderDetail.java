@@ -14,11 +14,11 @@ public class OrderDetail extends BaseModel {
     /**物品数量**/
     private Integer goodsNum;
     /**物品单位**/
-    private Integer unit;
+    private String unit;
     /**物品价格**/
-    private Integer price;
+    private Float price;
     /**总价格**/
-    private Integer sum;
+    private Float sum;
 
     public Integer getOrderId() {
         return orderId;
@@ -44,27 +44,27 @@ public class OrderDetail extends BaseModel {
         this.goodsNum = goodsNum;
     }
 
-    public Integer getUnit() {
+    public String getUnit() {
         return unit;
     }
 
-    public void setUnit(Integer unit) {
+    public void setUnit(String unit) {
         this.unit = unit;
     }
 
-    public Integer getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
-    public Integer getSum() {
+    public Float getSum() {
         return sum;
     }
 
-    public void setSum(Integer sum) {
+    public void setSum(Float sum) {
         this.sum = sum;
     }
 }

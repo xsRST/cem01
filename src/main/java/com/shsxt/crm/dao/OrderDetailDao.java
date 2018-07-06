@@ -23,5 +23,5 @@ public interface OrderDetailDao extends BaseDao<OrderDetail> {
      * @param orderId
      * @return
      */
-    Long getTotalPrice(Integer orderId);
+    Float getTotalPrice(Integer orderId);
 }

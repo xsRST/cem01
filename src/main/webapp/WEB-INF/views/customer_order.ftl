@@ -40,7 +40,7 @@
 
 	<!--客户订单详情信息-->
 	<div id="dlg" class="easyui-dialog"
-		style="width:700px;height:450px;padding: 10px 20px" closed="true"
+		style="width:700px;height:450px;" closed="true"
 		title="订单详情查看" buttons="#dlg-buttons">
 		<div id="p" class="easyui-panel" title="订单信息"
 			style="width:700px;height: 150px;padding: 10px">
